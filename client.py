@@ -7,7 +7,12 @@ port = 8239
 data = {}
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # s.connect(("192.168.0."+input("192.168.0."), port))
-    s.connect(("182.253.115.75", port))
+    while True:
+        try:
+            s.connect(("182.253.115.75", port))
+            break
+        except:
+            pass
     s.sendall(base64.encodebytes(b"are you a counting game server?"))
     # print(s.recv(1024).decode("utf-8"))
     if base64.decodebytes(s.recv(1024)).decode("utf-8") == "yes we are":
@@ -54,4 +59,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             else:
                 print("Waiting for the enemy's turn")
         print(data)
+    else:
+        print("This is not an Counting game server")
     s.close()
