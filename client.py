@@ -9,7 +9,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # s.connect(("192.168.0."+input("192.168.0."), port))
     while True:
         try:
-            s.connect(("182.253.115.75", port))
+            s.connect(("---------", port))
             break
         except:
             pass
